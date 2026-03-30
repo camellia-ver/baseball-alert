@@ -10,12 +10,13 @@ from sending_kakaotalk import sending_kakaotalk
 from datetime import datetime
 
 def main():
-    games = get_game_schedule(datetime(2026, 3, 29))  # 경기 있었던 날짜
+    test_date = datetime(2026, 3, 29)
+    games = get_game_schedule(test_date)  # 경기 있었던 날짜
     print(f"수집된 경기 수: {len(games)}")
     for game in games:
         print(game)
     
-    filtered = filtering_games(games)
+    filtered = filtering_games(games, today=test_date)
     print(f"필터링된 경기 수: {len(filtered)}")
     sending_kakaotalk(filtered)
 

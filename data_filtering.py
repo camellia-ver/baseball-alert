@@ -16,11 +16,14 @@ def load_config():
     with open('config.yaml', 'r', encoding='utf-8') as f:
         return yaml.safe_load(f)
     
-def filtering_games(games):
+def filtering_games(games, today=None):
+    if today is None:
+        today = datetime.today()
+    today = today.strftime("%m.%d")
+
     config = load_config()
     team = config['team']
     broadcast = config['broadcast']
-    today = datetime.today().strftime('%m.%d')
 
     filtered = []
     for game in games:
