@@ -40,13 +40,13 @@ def get_game_schedule(date=None):
                 continue
 
             # 날짜가 있으면 업데이트
-            if cols[0].text.strip():
+            if cols[0].text.strip() and '(' in cols[0].text:
                 current_date = cols[0].text.strip()
                 offset = 1 # 날짜 컬럼만큼 밀림
             else:
                 offset = 0
 
-            teams = cols[2].text.strip()
+            teams = cols[1 + offset].text.strip()
             parts = re.split(r'\d*vs\d*', teams)
             game = {
                 'date': current_date,
