@@ -1,6 +1,7 @@
 import requests
 import os
 import json
+from constants import TV_MAPPING
 
 ACCESS_TOKEN = os.environ['KAKAO_ACCESS_TOKEN']
 REST_API_KEY = os.environ['KAKAO_REST_API_KEY']
@@ -16,7 +17,7 @@ def sending_kakaotalk(games):
         message += f"📅 {game['date']}\n"
         message += f"⏰ {game['time']}\n"
         message += f"🏟️ {game['stadium']}\n"
-        message += f"📺 {game['tv']}\n"
+        message += f"📺 {TV_MAPPING.get(game['tv'], game['tv'])}\n"
         message += f"🆚 {game['away']} vs {game['home']}\n"
         message += "\n"
 

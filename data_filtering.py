@@ -1,16 +1,6 @@
 import yaml
 from datetime import datetime
-
-TV_MAPPING = {
-    "S-T": "SBS",
-    "M-T": "MBC",
-    "K-2T": "KBS2",
-    "SPO-T": "SPOTV",
-    "SPO-2T": "SPOTV2",
-    "MS-T": "MBC Sports+",
-    "SS-T": "SBS Sports",
-    "KN-T": "KBS N Sports",
-}
+from constants import TV_MAPPING
 
 def load_config():
     with open('config.yaml', 'r', encoding='utf-8') as f:
