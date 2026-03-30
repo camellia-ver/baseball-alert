@@ -1,5 +1,6 @@
 import requests
 import os
+import json
 
 ACCESS_TOKEN = os.environ['KAKAO_ACCESS_TOKEN']
 REST_API_KEY = os.environ['KAKAO_REST_API_KEY']
@@ -27,7 +28,7 @@ def sending_kakaotalk(games):
     }
 
     data = {
-        'template_object': str({
+        'template_object': json.dumps({
             'object_type': 'text',
             'text': message,
             'link': {}
