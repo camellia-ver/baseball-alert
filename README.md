@@ -21,6 +21,7 @@ samsung-baseball-alert/
 ├── game_schedule_crawling.py  # KBO 경기 일정 수집
 ├── data_filtering.py          # 삼성 + TV 중계 필터링
 ├── sending_kakaotalk.py       # 카카오톡 전송
+├── token_manager.py           # 토큰 자동 재발급
 ├── constants.py               # TV 방송국 매핑 테이블
 ├── config.yaml                # 설정값
 └── requirements.txt           # 라이브러리 목록
