@@ -52,7 +52,7 @@ def get_game_schedule(date=None):
                 'date': current_date,
                 'time': cols[0 + offset].text.strip(),
                 'away': parts[0].strip(),
-                'home': parts[1].strip(),
+                'home': parts[1].strip() if len(parts) > 1 else '',
                 'tv': cols[4 + offset].text.strip(),
                 'stadium': cols[6 + offset].text.strip(),
             }
