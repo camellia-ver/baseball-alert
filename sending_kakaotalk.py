@@ -8,7 +8,6 @@ CLIENT_SECRET = os.environ['KAKAO_CLIENT_SECRET']
 
 def sending_kakaotalk(games):
     if not games:
-        print("오늘 전송할 경기 정보가 없습니다.")
         return
     
     message = "⚾ 오늘의 삼성 라이온즈 경기 안내\n\n"
@@ -36,4 +35,3 @@ def sending_kakaotalk(games):
     }
 
     response = requests.post(url, headers=headers, data=data)
-    print(response.json())
