@@ -35,6 +35,12 @@ def get_game_schedule(date=None):
         for row in rows:
             cols = row.find_elements(By.TAG_NAME, "td")
 
+            for row in rows:
+                cols = row.find_elements(By.TAG_NAME, "td")
+                print(f"컬럼 수: {len(cols)}")  # 임시 추가
+                print(f"컬럼 내용: {[col.text.strip() for col in cols]}")  # 임시 추가
+
+
             if len(cols) < 8:
                 continue
 
