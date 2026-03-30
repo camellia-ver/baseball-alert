@@ -1,0 +1,15 @@
+# 필터링 설정
+team: "삼성 라이온즈"
+
+broadcast:
+  # 스포츠 전문 채널
+  - "MBC Sports+"
+  - "KBS N Sports"
+  - "SBS Sports"
+  # 공중파
+  - "KBS2"
+  - "MBC"
+  - "SBS"
+
+# 전송 설정
+send_time: "09:00"
