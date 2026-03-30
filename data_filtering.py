@@ -24,7 +24,7 @@ def filtering_games(games):
 
     filtered = []
     for game in games:
-        is_today = game['date'].startwith(today)
+        is_today = game['date'].startswith(today)
         is_target_team = is_target_team = game['away'] == team or game['home'] == team
         is_tv_broadcast = TV_MAPPING.get(game['tv'], game['tv']) in broadcast
 
