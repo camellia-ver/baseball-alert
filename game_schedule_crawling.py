@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime
+import re
 
 def get_game_schedule(date=None):
     if date is None:
@@ -35,26 +36,25 @@ def get_game_schedule(date=None):
         for row in rows:
             cols = row.find_elements(By.TAG_NAME, "td")
 
-            for row in rows:
-                cols = row.find_elements(By.TAG_NAME, "td")
-                print(f"컬럼 수: {len(cols)}")  # 임시 추가
-                print(f"컬럼 내용: {[col.text.strip() for col in cols]}")  # 임시 추가
-
-
             if len(cols) < 8:
                 continue
 
             # 날짜가 있으면 업데이트
             if cols[0].text.strip():
                 current_date = cols[0].text.strip()
+                offset = 1 # 날짜 컬럼만큼 밀림
+            else:
+                offset = 0
 
+            teams = cols[2].text.strip()
+            parts = re.split(r'\d*vs\d*', teams)
             game = {
-                "date": current_date,
-                "time": cols[1].text.strip(),
-                "away": cols[2].text.strip(),
-                "home": cols[4].text.strip(),
-                "tv": cols[7].text.strip(),
-                "stadium": cols[9].text.strip(),
+                'date': current_date,
+                'time': cols[0 + offset].text.strip(),
+                'away': parts[0].strip(),
+                'home': parts[1].strip(),
+                'tv': cols[4 + offset].text.strip(),
+                'stadium': cols[6 + offset].text.strip(),
             }
             games.append(game)
 
