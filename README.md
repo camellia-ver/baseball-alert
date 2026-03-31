@@ -1,4 +1,4 @@
-# ⚾ Samsung Baseball Alert
+# ⚾ Baseball Alert
 
 KBO 경기 일정을 수집하여 삼성 라이온즈 경기 중 TV 중계가 있는 날만  
 당일 오전 9시에 카카오톡으로 자동 전송하는 프로그램입니다.
