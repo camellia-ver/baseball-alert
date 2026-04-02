@@ -1,4 +1,4 @@
-name: Baseball Alert
+name: Baseball Alert(Before)
 
 on:
   schedule:
