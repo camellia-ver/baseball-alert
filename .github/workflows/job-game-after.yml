@@ -5,11 +5,16 @@ on:
     - cron: "0 14 * * *"  # 매일 UTC 00:00 = 한국시간 09:00
   workflow_dispatch:      # 수동 실행도 가능하게
 
+permissions:
+  contents: write
+
 jobs:
-  send-alert:
+  notify-game-result:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
+
       - name: 코드 가져오기
         uses: actions/checkout@v3
 
@@ -22,7 +27,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 알림 실행
-        run: python main.py
+        run: python game_after.py
         env:
           KAKAO_ACCESS_TOKEN: ${{ secrets.KAKAO_ACCESS_TOKEN }}
           KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
@@ -30,3 +35,12 @@ jobs:
           KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           GH_REPO: ${{secrets.GH_REPO}}
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add pending_games.json
+          # 변경사항 있을 때만 commit (파일 삭제 or 유지)
+          git diff --cached --quiet || git commit -m "Update pending games"
+          git push
