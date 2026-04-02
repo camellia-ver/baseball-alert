@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
+from selenium.common.exceptions import TimeoutException
 from datetime import datetime
 import re
 
@@ -32,10 +33,14 @@ def get_game_schedule(date=None):
     options.add_argument("--disable-dev-shm-usage") # 메모리 문제 방지
 
     driver = webdriver.Chrome(options=options)
+    driver.set_page_load_timeout(30)
 
-
-    driver.get(url)
-    driver.implicitly_wait(5)
+    try:
+        driver.get(url)
+    except TimeoutException:
+        print("페이지 로딩 타임아웃")
+        driver.quit()
+        return []
 
     try:
         rows = driver.find_elements(By.CSS_SELECTOR, "#tblScheduleList tbody tr")
