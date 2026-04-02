@@ -24,6 +24,9 @@ jobs:
       - name: 라이브러리 설치
         run: pip install -r requirements.txt
 
+      - name: Chrome 설치
+        uses: browser-actions/setup-chrome@v1
+
       - name: 알림 실행
         run: python game_before.py
         env:

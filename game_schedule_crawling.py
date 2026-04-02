@@ -32,10 +32,8 @@ def get_game_schedule(date=None):
     options.add_argument("--no-sandbox") # sandbox 비활성화
     options.add_argument("--disable-dev-shm-usage") # 메모리 문제 방지
 
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=options
-    )
+    driver = webdriver.Chrome(options=options)
+
 
     driver.get(url)
     driver.implicitly_wait(5)

@@ -21,7 +21,7 @@ def main():
         return
 
     games = get_game_schedule()
-    filtered = filtering_games(games)
+    filtered = filtering_games(games, after_game=True)
 
     if all(is_game_finished(g) for g in filtered):
         sending_kakaotalk(filtered, game_after=True)    
