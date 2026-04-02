@@ -25,6 +25,9 @@ def format_game_message(games, game_after=False):
             else:
                 lines.append(f"🆚 {game['away']} vs {game['home']}\n")
                 lines.append(f"📝 {game['remarks']}")
+
+            if game['has_highlight']: 
+                lines.append(f"🎬 하이라이트: {game['highlight_url']}") 
         else:
             lines.append(f"🆚 {game['away']} vs {game['home']}\n")
 
