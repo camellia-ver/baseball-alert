@@ -1,6 +1,7 @@
 import yaml
 from datetime import datetime
 from constants import TV_MAPPING
+from file_manage import save_games
 
 def load_config():
     with open('config.yaml', 'r', encoding='utf-8') as f:
@@ -16,12 +17,17 @@ def filtering_games(games, today=None, after_game=False):
     broadcast = config['broadcast']
 
     filtered = []
+    save_data = []
     for game in games:
         is_today = game['date'].startswith(today)
-        is_target_team = is_target_team = game['away'] == team or game['home'] == team
-        is_tv_broadcast = after_game if after_game else (TV_MAPPING.get(game['tv'], game['tv']) in broadcast)
+        is_target_team = game['away'] == team or game['home'] == team
+        is_tv_broadcast = True if after_game else (TV_MAPPING.get(game['tv'], game['tv']) in broadcast)
 
-        if is_today and is_target_team and is_tv_broadcast:
-            filtered.append(game)
+        if is_today and is_target_team:
+            save_data.append(game)
+            if is_tv_broadcast:
+                filtered.append(game)
+
+    save_games(save_data)
 
     return filtered
