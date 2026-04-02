@@ -7,19 +7,34 @@ ACCESS_TOKEN = os.environ['KAKAO_ACCESS_TOKEN']
 REST_API_KEY = os.environ['KAKAO_REST_API_KEY']
 CLIENT_SECRET = os.environ['KAKAO_CLIENT_SECRET']
 
-def sending_kakaotalk(games):
+def format_game_message(games, game_after=False):
+    title = '⚾ 오늘의 삼성 라이온즈 경기 결과 안내\n\n' if game_after else '⚾ 오늘의 삼성 라이온즈 경기 안내\n\n'
+
+    game_message = []
+    for game in games:
+        lines = [
+            f'📅 {game['date']}',
+            f'⏰ {game['time']}',
+            f'🏟️ {game['stadium']}',
+            f'📺 {TV_MAPPING.get(game['tv'], game['tv'])}',
+        ]
+
+        if game_after:
+            if game['remarks'] == '-':
+                lines.append(f'🆚 {game['away']} {game['away_score']} vs {game['home_score']} {game['home']}\n')
+            else:
+                lines.append(f'🆚 {game['away']} vs {game['home']}\n')
+                lines.append(f'📝 {game['remarks']}')
+        else:
+            lines.append(f'🆚 {game['away']} vs {game['home']}\n')
+
+        game_message.append('\n'.join(lines))
+
+    return title + '\n\n'.join(game_message)
+
+def sending_kakaotalk(games, game_after=False):
     if not games:
         return
-    
-    message = "⚾ 오늘의 삼성 라이온즈 경기 안내\n\n"
-    
-    for game in games:
-        message += f"📅 {game['date']}\n"
-        message += f"⏰ {game['time']}\n"
-        message += f"🏟️ {game['stadium']}\n"
-        message += f"📺 {TV_MAPPING.get(game['tv'], game['tv'])}\n"
-        message += f"🆚 {game['away']} vs {game['home']}\n"
-        message += "\n"
 
     url = 'https://kapi.kakao.com/v2/api/talk/memo/default/send'
 
@@ -30,7 +45,7 @@ def sending_kakaotalk(games):
     data = {
         'template_object': json.dumps({
             'object_type': 'text',
-            'text': message,
+            'text': format_game_message(games, game_after),
             'link': {}
         })
     }

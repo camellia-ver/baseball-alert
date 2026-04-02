@@ -60,6 +60,8 @@ def get_game_schedule(date=None):
                 offset = 0
 
             teams = parse_teams(cols[1 + offset].text.strip())
+            highlight_links = cols[3 + offset].find_elements(By.TAG_NAME, 'a')
+            has_highlight = len(highlight_links) > 0
             game = {
                 'date': current_date,
                 'time': cols[0 + offset].text.strip(),
@@ -67,6 +69,7 @@ def get_game_schedule(date=None):
                 'away_score': teams['away_score'],
                 'home': teams['home'],
                 'home_score': teams['home_score'],
+                'has_highlight': has_highlight,
                 'tv': cols[4 + offset].text.strip(),
                 'stadium': cols[6 + offset].text.strip(),
                 'remarks': cols[7 + offset].text.strip()

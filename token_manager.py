@@ -40,6 +40,10 @@ def update_github_secret(secret_name, secret_value):
         }
     )
 
+        # ✅ 임시 디버깅 추가
+    print(f"Status code: {key_response.status_code}")
+    print(f"Response: {key_response.json()}")
+
     key_data = key_response.json()
     public_key = public.PublicKey(key_data['key'].encode(), encoding.Base64Encoder())
     sealed_box = public.SealedBox(public_key)
