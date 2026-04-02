@@ -6,6 +6,19 @@ from webdriver_manager.chrome import ChromeDriverManager
 from datetime import datetime
 import re
 
+def parse_teams(team_str):
+    pattern = r'([A-Za-z가-힣]+)(\d*)vs(\d*)([A-Za-z가-힣]+)'
+    m = re.match(pattern, team_str)
+
+    if m:
+        away, away_score, home_score, home = m.groups()
+        return {
+            'away': away,
+            'home': home,
+            'away_score': int(away_score) if away_score else None,
+            'home_score': int(home_score) if home_score else None,
+        }
+
 def get_game_schedule(date=None):
     if date is None:
         date = datetime.today()
@@ -46,15 +59,17 @@ def get_game_schedule(date=None):
             else:
                 offset = 0
 
-            teams = cols[1 + offset].text.strip()
-            parts = re.split(r'\d*vs\d*', teams)
+            teams = parse_teams(cols[1 + offset].text.strip())
             game = {
                 'date': current_date,
                 'time': cols[0 + offset].text.strip(),
-                'away': parts[0].strip(),
-                'home': parts[1].strip() if len(parts) > 1 else '',
+                'away': teams['away'],
+                'away_score': teams['away_score'],
+                'home': teams['home'],
+                'home_score': teams['home_score'],
                 'tv': cols[4 + offset].text.strip(),
                 'stadium': cols[6 + offset].text.strip(),
+                'remarks': cols[7 + offset].text.strip()
             }
             games.append(game)
 
