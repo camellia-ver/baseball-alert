@@ -1,10 +1,13 @@
 import json
+import os
 from pathlib import Path
 from datetime import datetime
 
 PENDING_FILE = 'data/pending_games.json'
 
 def save_games(games):
+    os.makedirs(os.path.dirname(PENDING_FILE), exist_ok=True)
+    
     with open(PENDING_FILE, 'w', encoding='utf-8') as f:
         json.dump(games, f, ensure_ascii=False, indent=2)
 
