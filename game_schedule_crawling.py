@@ -38,7 +38,6 @@ def get_game_schedule(date=None):
     try:
         driver.get(url)
     except TimeoutException:
-        print("페이지 로딩 타임아웃")
         driver.quit()
         return []
 

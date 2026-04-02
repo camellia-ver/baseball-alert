@@ -35,12 +35,11 @@ jobs:
           KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
           GH_TOKEN: ${{secrets.GH_TOKEN}}
           GH_REPO: ${{secrets.GH_REPO}}
-
+          
       - name: Commit changes
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add pending_games.json
-          # 변경사항 있을 때만 commit (파일 삭제 or 유지)
+          git add pending_games.json || echo "파일 없음, 스킵"
           git diff --cached --quiet || git commit -m "Update pending games"
           git push
