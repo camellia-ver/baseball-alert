@@ -1,0 +1,32 @@
+name: Baseball Alert
+
+on:
+  schedule:
+    - cron: "0 14 * * *"  # 매일 UTC 00:00 = 한국시간 09:00
+  workflow_dispatch:      # 수동 실행도 가능하게
+
+jobs:
+  send-alert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 코드 가져오기
+        uses: actions/checkout@v3
+
+      - name: Python 설정
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: 라이브러리 설치
+        run: pip install -r requirements.txt
+
+      - name: 알림 실행
+        run: python main.py
+        env:
+          KAKAO_ACCESS_TOKEN: ${{ secrets.KAKAO_ACCESS_TOKEN }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+          KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          GH_REPO: ${{secrets.GH_REPO}}
