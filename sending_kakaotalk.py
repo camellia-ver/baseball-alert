@@ -13,20 +13,20 @@ def format_game_message(games, game_after=False):
     game_message = []
     for game in games:
         lines = [
-            f'📅 {game['date']}',
-            f'⏰ {game['time']}',
-            f'🏟️ {game['stadium']}',
-            f'📺 {TV_MAPPING.get(game['tv'], game['tv'])}',
+            f"📅 {game['date']}",
+            f"⏰ {game['time']}",
+            f"🏟️ {game['stadium']}",
+            f"📺 {TV_MAPPING.get(game['tv'], game['tv'])}",
         ]
 
         if game_after:
             if game['remarks'] == '-':
-                lines.append(f'🆚 {game['away']} {game['away_score']} vs {game['home_score']} {game['home']}\n')
+                lines.append(f"🆚 {game['away']} {game['away_score']} vs {game['home_score']} {game['home']}\n")
             else:
-                lines.append(f'🆚 {game['away']} vs {game['home']}\n')
-                lines.append(f'📝 {game['remarks']}')
+                lines.append(f"🆚 {game['away']} vs {game['home']}\n")
+                lines.append(f"📝 {game['remarks']}")
         else:
-            lines.append(f'🆚 {game['away']} vs {game['home']}\n')
+            lines.append(f"🆚 {game['away']} vs {game['home']}\n")
 
         game_message.append('\n'.join(lines))
 
