@@ -1,7 +1,7 @@
 import requests
 import os
 import json
-from constants import TV_MAPPING
+from core.constants import TV_MAPPING
 
 ACCESS_TOKEN = os.environ['KAKAO_ACCESS_TOKEN']
 REST_API_KEY = os.environ['KAKAO_REST_API_KEY']

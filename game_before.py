@@ -1,7 +1,7 @@
-from game_schedule_crawling import get_game_schedule
-from data_filtering import filtering_games
-from sending_kakaotalk import sending_kakaotalk
-from token_manager import ensure_valid_token
+from crawler.game_schedule_crawling import get_game_schedule
+from core.data_filtering import filtering_games
+from kakao.sending_kakaotalk import sending_kakaotalk
+from kakao.token_manager import ensure_valid_token
 
 def main():
     ensure_valid_token() # 토큰 유효성 확인 및 갱신

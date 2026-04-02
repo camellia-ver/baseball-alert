@@ -1,8 +1,8 @@
-from game_schedule_crawling import get_game_schedule
-from data_filtering import filtering_games
-from sending_kakaotalk import sending_kakaotalk
-from token_manager import ensure_valid_token
-from file_manage import load_games, save_games
+from crawler.game_schedule_crawling import get_game_schedule
+from core.data_filtering import filtering_games
+from kakao.sending_kakaotalk import sending_kakaotalk
+from kakao.token_manager import ensure_valid_token
+from core.file_manage import load_games, save_games
 import time
 
 def is_game_finished(game):

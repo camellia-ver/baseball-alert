@@ -1,7 +1,7 @@
 import yaml
 from datetime import datetime
-from constants import TV_MAPPING
-from file_manage import save_games
+from core.constants import TV_MAPPING
+from core.file_manage import save_games
 
 def load_config():
     with open('config.yaml', 'r', encoding='utf-8') as f:

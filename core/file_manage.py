@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from datetime import datetime
 
-PENDING_FILE = 'pending_games.json'
+PENDING_FILE = 'data/pending_games.json'
 
 def save_games(games):
     with open(PENDING_FILE, 'w', encoding='utf-8') as f:
