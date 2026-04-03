@@ -3,10 +3,6 @@ import os
 import json
 from core.constants import TV_MAPPING
 
-ACCESS_TOKEN = os.environ['KAKAO_ACCESS_TOKEN']
-REST_API_KEY = os.environ['KAKAO_REST_API_KEY']
-CLIENT_SECRET = os.environ['KAKAO_CLIENT_SECRET']
-
 def format_game_message(games, game_after=False):
     title = '⚾ 오늘의 삼성 라이온즈 경기 결과 안내\n\n' if game_after else '⚾ 오늘의 삼성 라이온즈 경기 안내\n\n'
 
@@ -41,8 +37,9 @@ def sending_kakaotalk(games, game_after=False):
 
     url = 'https://kapi.kakao.com/v2/api/talk/memo/default/send'
 
+    access_token = os.environ['KAKAO_ACCESS_TOKEN']
     headers = {
-        'Authorization': f'Bearer {ACCESS_TOKEN}'
+        'Authorization': f'Bearer {access_token}'
     }
 
     data = {
