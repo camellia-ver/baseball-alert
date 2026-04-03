@@ -40,10 +40,6 @@ def update_github_secret(secret_name, secret_value):
         }
     )
 
-        # ✅ 임시 디버깅 추가
-    print(f"Status code: {key_response.status_code}")
-    print(f"Response: {key_response.json()}")
-
     key_data = key_response.json()
     public_key = public.PublicKey(key_data['key'].encode(), encoding.Base64Encoder())
     sealed_box = public.SealedBox(public_key)
@@ -64,20 +60,15 @@ def update_github_secret(secret_name, secret_value):
 
 def ensure_valid_token():
     if not is_token_valid():
-        print("토큰 만료됨. 재발급 시작...")
         data = refresh_access_token()
     
         # 새 access_token 업데이트
         new_access_token = data['access_token']
         update_github_secret('KAKAO_ACCESS_TOKEN', new_access_token)
         os.environ['KAKAO_ACCESS_TOKEN'] = new_access_token
-        print('access_token 갱신 완료!')
 
         # refresh_token도 새로 발급된 경우 업데이트
         if 'refresh_token' in data:
             new_refresh_token = data['refresh_token']
             update_github_secret('KAKAO_REFRESH_TOKEN', new_refresh_token)
             os.environ['KAKAO_REFRESH_TOKEN'] = new_refresh_token
-            print("refresh_token 갱신 완료!")
-    else:
-        print("토큰 유효함!")
