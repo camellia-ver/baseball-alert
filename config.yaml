@@ -11,5 +11,7 @@ broadcast:
   - "MBC"
   - "SBS"
 
+  - "KBS LIFE"
+
 # 전송 설정
 send_time: "09:00"
