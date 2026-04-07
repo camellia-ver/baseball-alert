@@ -24,9 +24,13 @@ def main():
     games = get_game_schedule()
     filtered = filtering_games(games, after_game=True)
 
+    pending = None
+    if len(filtered) > 2:
+        pending = filtered.pop()
+
     if all(is_game_finished(g) for g in filtered):
         sending_kakaotalk(filtered, game_after=True)    
-        save_games([])
+        save_games([pending] if pending else [])
 
 if __name__ == '__main__':
     main()
