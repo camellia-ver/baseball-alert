@@ -8,11 +8,12 @@ def format_game_message(games, game_after=False):
 
     game_message = []
     for game in games:
+        tv_display = ', '.join(TV_MAPPING.get(tv, tv) for tv in game['tv'])
         lines = [
             f"📅 {game['date']}",
             f"⏰ {game['time']}",
             f"🏟️ {game['stadium']}",
-            f"📺 {TV_MAPPING.get(game['tv'], game['tv'])}",
+            f"📺 {tv_display}",
         ]
 
         if game_after:
