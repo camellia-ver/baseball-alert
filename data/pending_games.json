@@ -1,15 +1,15 @@
 [
   {
-    "date": "04.07(화)",
+    "date": "04.08(수)",
     "time": "18:30",
     "away": "삼성",
-    "away_score": 0,
+    "away_score": null,
     "home": "KIA",
-    "home_score": 0,
+    "home_score": null,
     "has_highlight": false,
     "highlight_url": null,
     "tv": [
-      "KN-T",
+      "KBS LIFE",
       "TVING"
     ],
     "stadium": "광주",
