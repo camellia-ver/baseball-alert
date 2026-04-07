@@ -5,4 +5,5 @@ TV_MAPPING = {
     "MS-T": "MBC Sports+",
     "SS-T": "SBS Sports",
     "KN-T": "KBS N Sports",
+    "KBS LIFE": "KBS LIFE",
 }
