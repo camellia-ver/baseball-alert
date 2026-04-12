@@ -1,11 +1,11 @@
 [
   {
-    "date": "04.11(토)",
-    "time": "17:00",
+    "date": "04.12(일)",
+    "time": "14:00",
     "away": "NC",
-    "away_score": 4,
+    "away_score": null,
     "home": "삼성",
-    "home_score": 5,
+    "home_score": null,
     "has_highlight": false,
     "highlight_url": null,
     "tv": [
