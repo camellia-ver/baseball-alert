@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "04.14(화)",
+    "time": "18:30",
+    "away": "삼성",
+    "away_score": null,
+    "home": "한화",
+    "home_score": null,
+    "has_highlight": false,
+    "highlight_url": null,
+    "tv": [
+      "SPO-2T"
+    ],
+    "stadium": "대전",
+    "remarks": "-"
+  }
+]
