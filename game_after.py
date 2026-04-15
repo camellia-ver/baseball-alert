@@ -14,8 +14,8 @@ def main():
         return
 
     games = get_game_schedule()
-    filtered = filtering_games(games,today= '04.14(화)',after_game=True)
-    # filtered[0]['date']
+    filtered = filtering_games(games, today= filtered[0]['date'], after_game=True)
+
     pending = None
     if len(filtered) > 2:
         pending = filtered.pop()
