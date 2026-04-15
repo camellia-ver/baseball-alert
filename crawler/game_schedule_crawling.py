@@ -61,14 +61,15 @@ def get_game_schedule(date=None):
                 offset = 0
 
             teams = parse_teams(cols[1 + offset].text.strip())
+            review_links = cols[2 + offset].find_elements(By.TAG_NAME, 'a')
             highlight_links = cols[3 + offset].find_elements(By.TAG_NAME, 'a')
+
+            has_review = len(review_links) > 0 and review_links[0].text == '리뷰'
             has_highlight = len(highlight_links) > 0
+            
             highlight_url = highlight_links[0].get_attribute('href') if has_highlight else None
-            tv_cell = cols[4 + offset]
-            tv_texts = [
-                el.strip() for el in tv_cell.get_attribute('innerHTML').split('<br>')
-                if el.strip()
-            ]
+            tv_html = cols[4 + offset].get_attribute('innerHTML')
+            tv_texts = [t.strip() for t in re.split(r'<br\s*/?>', tv_html, flags=re.IGNORECASE) if t.strip()]
 
             game = {
                 'date': current_date,
@@ -77,7 +78,7 @@ def get_game_schedule(date=None):
                 'away_score': teams['away_score'],
                 'home': teams['home'],
                 'home_score': teams['home_score'],
-                'has_highlight': has_highlight,
+                'has_review': has_review,
                 'highlight_url': highlight_url,
                 'tv': tv_texts,
                 'stadium': cols[6 + offset].text.strip(),
