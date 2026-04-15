@@ -3,16 +3,8 @@ from core.data_filtering import filtering_games
 from kakao.sending_kakaotalk import sending_kakaotalk
 from kakao.token_manager import ensure_valid_token
 from core.file_manage import load_games, save_games
+from core.check_finish_game import is_game_finished
 import time
-
-def is_game_finished(game):
-    if game['remarks'] != '-':  # 취소
-        return True
-    
-    if game['has_highlight']:   # 정상 종료
-        return True
-    
-    return False
 
 def main():
     ensure_valid_token() # 토큰 유효성 확인 및 갱신
