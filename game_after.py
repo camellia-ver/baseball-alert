@@ -14,7 +14,7 @@ def main():
         return
 
     games = get_game_schedule()
-    filtered = filtering_games(games, after_game=True)
+    filtered = filtering_games(games,today= ,after_game=True)
 
     pending = None
     if len(filtered) > 2:

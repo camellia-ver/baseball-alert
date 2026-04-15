@@ -9,8 +9,7 @@ def load_config():
     
 def filtering_games(games, today=None, after_game=False):
     if today is None:
-        today = datetime.today()
-    today = today.strftime("%m.%d")
+        today = datetime.today().strftime("%m.%d")
 
     config = load_config()
     team = config['team']
