@@ -3,10 +3,10 @@
     "date": "04.16(목)",
     "time": "18:30",
     "away": "삼성",
-    "away_score": null,
+    "away_score": 0,
     "home": "한화",
-    "home_score": null,
-    "has_review": false,
+    "home_score": 0,
+    "has_review": [],
     "highlight_url": null,
     "tv": [
       "SPO-2T"
