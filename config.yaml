@@ -1,4 +1,7 @@
 # 필터링 설정
+notification: 
+  channel: discord   # "kakao" 또는 "discord"로 전환 가능
+
 team: "삼성"
 
 broadcast:

@@ -2,16 +2,12 @@ import yaml
 from datetime import datetime
 from core.constants import TV_MAPPING
 from core.file_manage import save_games
-
-def load_config():
-    with open('config.yaml', 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+from util.load_config import load_config
     
-def filtering_games(games, today=None, after_game=False):
+def filtering_games(games, config, today=None, after_game=False):
     if today is None:
         today = datetime.today().strftime("%m.%d")
 
-    config = load_config()
     team = config['team']
     broadcast = config['broadcast']
 
