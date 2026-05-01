@@ -11,9 +11,5 @@ def sending_discord(games, game_after=False):
 
     response = requests.post(
         url,
-        json.dumps({
-            'object_type': 'text',
-            'text': format_game_message(games, game_after),
-            'link': {}
-        })
+        json={'content': format_game_message(games, game_after)}
     )
