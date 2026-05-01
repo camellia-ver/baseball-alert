@@ -9,19 +9,18 @@ def main():
     config = load_config()
     channel = config['notification']['channel']
 
-    if channel == 'kakao':
-        ensure_valid_token()  # 카카오 토큰 유효성 확인 및 갱신
-        games = get_game_schedule()
-        filtered = filtering_games(games, config)
-        sending_kakaotalk(filtered)
+    channel_handlers = {
+        'discord': (None, sending_discord),
+        'kakao': (ensure_valid_token, sending_kakaotalk)
+    }
+    ensure_token, send_fn = channel_handlers[channel]
 
-    elif channel == 'discord':
-        games = get_game_schedule()
-        filtered = filtering_games(games, config)
-        sending_discord(filtered)
+    if ensure_token:
+        ensure_token() # 토큰 유효성 확인 및 갱신
 
-    else:
-        raise ValueError(f"지원하지 않는 채널입니다: {channel}")
+    games = get_game_schedule()
+    filtered = filtering_games(games, config)
+    send_fn(filtered)
 
 if __name__ == '__main__':
     main()

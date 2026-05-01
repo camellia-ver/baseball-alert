@@ -12,10 +12,16 @@ def main():
     config = load_config()
     channel = config['notification']['channel']
     
-    if channel == 'discord':
-        ensure_valid_token() # 토큰 유효성 확인 및 갱신
-    filtered = load_games()
+    channel_handlers = {
+        'discord': (None, sending_discord),
+        'kakao': (ensure_valid_token, sending_kakaotalk)
+    }
+    ensure_token, send_fn = channel_handlers[channel]
 
+    if ensure_token:
+        ensure_token() # 토큰 유효성 확인 및 갱신
+
+    filtered = load_games()
     if not filtered:
         return
 
@@ -27,10 +33,7 @@ def main():
         pending = filtered.pop()
 
     if all(is_game_finished(g) for g in filtered):        
-        if channel == 'discord':
-            sending_discord(filtered, game_after=True)
-        else:
-            sending_kakaotalk(filtered, game_after=True)    
+        send_fn(filtered, game_after=True)  
         save_games([pending] if pending else [])
 
 if __name__ == '__main__':
