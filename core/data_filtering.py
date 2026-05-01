@@ -1,12 +1,11 @@
-import yaml
 from datetime import datetime
+import zoneinfo
 from core.constants import TV_MAPPING
 from core.file_manage import save_games
-from util.load_config import load_config
     
 def filtering_games(games, config, today=None, after_game=False):
     if today is None:
-        today = datetime.today().strftime("%m.%d")
+        today = datetime.now(zoneinfo.ZoneInfo('Asia/Seoul')).strftime("%m.%d")
 
     team = config['team']
     broadcast = config['broadcast']
