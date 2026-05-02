@@ -3,10 +3,10 @@
     "date": "05.02(토)",
     "time": "17:00",
     "away": "한화",
-    "away_score": null,
+    "away_score": 0,
     "home": "삼성",
-    "home_score": null,
-    "has_review": false,
+    "home_score": 0,
+    "has_review": [],
     "highlight_url": null,
     "tv": [
       "MS-T"
