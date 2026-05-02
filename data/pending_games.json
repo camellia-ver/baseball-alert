@@ -1,15 +1,15 @@
 [
   {
-    "date": "05.01(금)",
+    "date": "05.02(토)",
     "time": "17:00",
     "away": "한화",
-    "away_score": 3,
+    "away_score": null,
     "home": "삼성",
-    "home_score": 4,
-    "has_review": true,
-    "highlight_url": "https://www.koreabaseball.com/Schedule/GameCenter/Main.aspx?gameDate=20260501&gameId=20260501HHSS0&section=HIGHLIGHT",
+    "home_score": null,
+    "has_review": false,
+    "highlight_url": null,
     "tv": [
-      "K-2T"
+      "MS-T"
     ],
     "stadium": "대구",
     "remarks": "-"
