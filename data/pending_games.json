@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "05.12(화)",
+    "time": "18:30",
+    "away": "삼성",
+    "away_score": null,
+    "home": "LG",
+    "home_score": null,
+    "has_review": false,
+    "highlight_url": null,
+    "tv": [
+      "SS-T"
+    ],
+    "stadium": "잠실",
+    "remarks": "-"
+  }
+]
