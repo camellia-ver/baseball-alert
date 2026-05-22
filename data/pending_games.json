@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "05.22(금)",
+    "time": "18:30",
+    "away": "삼성",
+    "away_score": null,
+    "home": "롯데",
+    "home_score": null,
+    "has_review": false,
+    "highlight_url": null,
+    "tv": [
+      "SPO-2T"
+    ],
+    "stadium": "사직",
+    "remarks": "-"
+  }
+]
