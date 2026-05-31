@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "05.31(일)",
+    "time": "14:00",
+    "away": "두산",
+    "away_score": 0,
+    "home": "삼성",
+    "home_score": 0,
+    "has_review": [],
+    "highlight_url": null,
+    "tv": [
+      "SPO-T"
+    ],
+    "stadium": "대구",
+    "remarks": "-"
+  }
+]
