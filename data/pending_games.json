@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "06.10(수)",
+    "time": "18:30",
+    "away": "삼성",
+    "away_score": null,
+    "home": "KT",
+    "home_score": null,
+    "has_review": false,
+    "highlight_url": null,
+    "tv": [
+      "SPO-T"
+    ],
+    "stadium": "수원",
+    "remarks": "-"
+  }
+]
