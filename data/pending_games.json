@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "07.02(목)",
+    "time": "18:30",
+    "away": "삼성",
+    "away_score": null,
+    "home": "NC",
+    "home_score": null,
+    "has_review": false,
+    "highlight_url": null,
+    "tv": [
+      "SS-T"
+    ],
+    "stadium": "창원",
+    "remarks": "-"
+  }
+]
