@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "08.08(토)",
+    "time": "18:00",
+    "away": "두산",
+    "away_score": null,
+    "home": "삼성",
+    "home_score": null,
+    "has_review": [],
+    "highlight_url": null,
+    "tv": [
+      "MS-T"
+    ],
+    "stadium": "대구",
+    "remarks": "폭염취소"
+  }
+]
