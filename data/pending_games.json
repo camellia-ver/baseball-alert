@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "date": "08.11(화)",
+    "time": "19:00",
+    "away": "삼성",
+    "away_score": null,
+    "home": "KIA",
+    "home_score": null,
+    "has_review": false,
+    "highlight_url": null,
+    "tv": [
+      "KN-T"
+    ],
+    "stadium": "광주",
+    "remarks": "-"
+  }
+]
